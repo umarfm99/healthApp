@@ -84,7 +84,7 @@ button:hover {
 
 .theme-toggle {
   display: block;
-  margin: 0 auto 20px;
+  margin: 0 0 20px auto;
   background: transparent;
   border: 1px solid var(--muted);
   color: var(--text);

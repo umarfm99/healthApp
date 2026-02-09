@@ -70,6 +70,19 @@ function drawChart(last7) {
   const startX = 20;
   const gap = 55;
 
+  // Draw legend
+  ctx.fillStyle = "#2563eb";
+  ctx.fillRect(10, 10, 12, 12);
+  ctx.fillStyle = "#0f172a";
+  ctx.font = "12px system-ui";
+  ctx.fillText("Sleep", 28, 18);
+
+  ctx.fillStyle = "#dc2626";
+  ctx.fillRect(110, 10, 12, 12);
+  ctx.fillStyle = "#0f172a";
+  ctx.fillText("Stress", 128, 18);
+
+  // Draw sleep line
   ctx.beginPath();
   ctx.strokeStyle = "#2563eb";
   last7.forEach((e,i)=>{
@@ -79,6 +92,7 @@ function drawChart(last7) {
   });
   ctx.stroke();
 
+  // Draw stress line
   ctx.beginPath();
   ctx.strokeStyle = "#dc2626";
   last7.forEach((e,i)=>{
