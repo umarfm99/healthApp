@@ -1,0 +1,14 @@
+{
+  "name": "healthapp",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "netlify dev",
+    "build": "echo 'No build step'"
+  },
+  "dependencies": {
+    "pg": "^8.10.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.0"
+  }
+}

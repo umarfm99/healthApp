@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Health Insight Tracker - Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+    <h1>Health Insight Tracker</h1>
+    <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+      🌙 Dark Mode
+    </button>
+  </div>
+
+  <div class="card" style="max-width:400px;margin:40px auto;">
+    <h2 style="text-align:center;">Account</h2>
+    
+    <div style="margin-bottom:20px;">
+      <label>
+        Email
+        <input type="email" id="emailInput" placeholder="you@example.com" autocomplete="email">
+      </label>
+
+      <label style="margin-top:15px;">
+        Password
+        <input type="password" id="passwordInput" placeholder="Password" autocomplete="current-password">
+      </label>
+    </div>
+
+    <div style="display:flex;gap:10px;flex-direction:column;">
+      <button id="loginBtn">Login</button>
+      <button id="registerBtn" style="background:#10b981;">Register</button>
+    </div>
+
+    <p id="message" style="margin-top:15px;text-align:center;color:var(--muted);"></p>
+  </div>
+</div>
+
+<script src="auth.js"></script>
+</body>
+</html>

@@ -11,9 +11,13 @@
 <div class="container">
   <h1>Health Insight Tracker</h1>
 
-  <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
-    🌙 Dark Mode
-  </button>
+  <div style="display:flex;justify-content:space-between;align-items:center;">
+    <button id="logoutBtn" style="background:#ef4444;width:auto;padding:8px 14px;margin-top:0;">Logout</button>
+    <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+      🌙 Dark Mode
+    </button>
+  </div>
+  <p id="userInfo" style="text-align:center;color:var(--muted);margin-bottom:20px;"></p>
 
   <div class="card">
     <h2>Daily Entry</h2>
