@@ -9,34 +9,34 @@
 <body>
 
 <div class="container">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
-    <h1>Health Insight Tracker</h1>
-    <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:clamp(8px,1.5vw,15px);margin-bottom:clamp(15px,2.5vw,25px);">
+    <h1 style="margin:0;flex:1 1 auto;min-width:150px;">Health Insight Tracker</h1>
+    <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" style="flex-shrink:0;margin:0;">
       🌙 Dark Mode
     </button>
   </div>
 
-  <div class="card" style="max-width:400px;margin:40px auto;">
-    <h2 style="text-align:center;">Account</h2>
+  <div class="card" style="max-width:450px;margin:clamp(20px,5vw,60px) auto;padding:clamp(16px,3vw,24px);">
+    <h2 style="text-align:center;margin-top:0;">Account</h2>
     
-    <div style="margin-bottom:20px;">
+    <div style="margin-bottom:clamp(15px,2vw,20px);">
       <label>
         Email
         <input type="email" id="emailInput" placeholder="you@example.com" autocomplete="email">
       </label>
 
-      <label style="margin-top:15px;">
+      <label style="margin-top:clamp(12px,2vw,15px);">
         Password
         <input type="password" id="passwordInput" placeholder="Password" autocomplete="current-password">
       </label>
     </div>
 
-    <div style="display:flex;gap:10px;flex-direction:column;">
+    <div style="display:flex;gap:clamp(8px,1.5vw,10px);flex-direction:column;">
       <button id="loginBtn">Login</button>
       <button id="registerBtn" style="background:#10b981;">Register</button>
     </div>
 
-    <p id="message" style="margin-top:15px;text-align:center;color:var(--muted);"></p>
+    <p id="message" style="margin:clamp(12px,2vw,15px) 0 0 0;text-align:center;color:var(--muted);font-size:clamp(0.8rem,1.5vw,0.9rem);"></p>
   </div>
 </div>
 

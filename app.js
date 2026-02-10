@@ -17,7 +17,13 @@ const userInfo = document.getElementById('userInfo');
 const sleep = document.getElementById("sleep");
 const water = document.getElementById("water");
 const stress = document.getElementById("stress");
-const symptom = document.getElementById("symptom");
+
+// Symptom checkboxes
+const symptomCheckboxes = [
+  'symptom_fatigue', 'symptom_headache', 'symptom_fever',
+  'symptom_cough', 'symptom_throat', 'symptom_aches',
+  'symptom_dizziness', 'symptom_nausea', 'symptom_chills'
+].map(id => document.getElementById(id));
 
 let entries = JSON.parse(localStorage.getItem("healthEntries")) || [];
 
@@ -90,6 +96,12 @@ function logout() {
 saveBtn.onclick = async () => {
   if (!sleep.value || !water.value || !stress.value) return;
 
+  // Get selected symptoms
+  const selectedSymptoms = symptomCheckboxes
+    .filter(checkbox => checkbox.checked)
+    .map(checkbox => checkbox.value)
+    .join(', ');
+
   saveBtn.disabled = true;
   const originalText = saveBtn.textContent;
   saveBtn.textContent = 'Saving...';
@@ -99,7 +111,7 @@ saveBtn.onclick = async () => {
     sleep: Number(sleep.value),
     water: Number(water.value),
     stress: Number(stress.value),
-    symptom: symptom.value
+    symptoms: selectedSymptoms || 'none'
   };
 
   try {
@@ -108,7 +120,7 @@ saveBtn.onclick = async () => {
     sleep.value = '';
     water.value = '';
     stress.value = '';
-    symptom.value = 'none';
+    symptomCheckboxes.forEach(checkbox => checkbox.checked = false);
     setTimeout(() => {
       saveBtn.textContent = originalText;
       saveBtn.disabled = false;
@@ -128,7 +140,11 @@ function calculateRisk(e) {
   if (e.sleep < 6) r += 2;
   if (e.water < 2) r += 1;
   if (e.stress >= 4) r += 2;
-  if (e.symptom !== "none") r += 2;
+  
+  // Check for symptoms (handle both old 'symptom' and new 'symptoms' fields)
+  const symptoms = e.symptoms || e.symptom || 'none';
+  if (symptoms && symptoms !== 'none') r += 2;
+  
   return r;
 }
 
@@ -136,7 +152,10 @@ function analyzeTrends(last7) {
   if (last7.length < 4) return "Not enough data yet.";
   const avgSleep = last7.reduce((a,e)=>a+e.sleep,0)/last7.length;
   const avgStress = last7.reduce((a,e)=>a+e.stress,0)/last7.length;
-  const symptomDays = last7.filter(e=>e.symptom!=="none").length;
+  const symptomDays = last7.filter(e=>{
+    const symptoms = e.symptoms || e.symptom || 'none';
+    return symptoms && symptoms !== 'none';
+  }).length;
 
   if (avgSleep < 6) return "⚠️ Low sleep trend detected.";
   if (avgStress > 3.5) return "⚠️ High stress trend detected.";
@@ -208,7 +227,8 @@ function updateUI() {
   log.innerHTML = "";
   entries.slice(-5).reverse().forEach(e=>{
     const li = document.createElement("li");
-    li.textContent = `${e.date} | Sleep ${e.sleep}h | Water ${e.water}L | Stress ${e.stress} | ${e.symptom}`;
+    const symptoms = e.symptoms || e.symptom || 'none';
+    li.textContent = `${e.date} | Sleep ${e.sleep}h | Water ${e.water}L | Stress ${e.stress} | ${symptoms}`;
     log.appendChild(li);
   });
 

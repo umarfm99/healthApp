@@ -9,15 +9,14 @@
 <body>
 
 <div class="container">
-  <h1>Health Insight Tracker</h1>
-
-  <div style="display:flex;justify-content:space-between;align-items:center;">
-    <button id="logoutBtn" style="background:#ef4444;width:auto;padding:8px 14px;margin-top:0;">Logout</button>
-    <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:clamp(10px,2vw,20px);">
+    <h1 style="margin:0;flex:1 1 auto;min-width:150px;">Health Insight Tracker</h1>
+    <button id="logoutBtn" style="background:#ef4444;width:auto;padding:8px 14px;margin-top:0;margin-bottom:0;flex-shrink:0;">Logout</button>
+    <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" style="flex-shrink:0;margin:0;">
       🌙 Dark Mode
     </button>
   </div>
-  <p id="userInfo" style="text-align:center;color:var(--muted);margin-bottom:20px;"></p>
+  <p id="userInfo" style="text-align:center;color:var(--muted);margin:0 0 clamp(10px,2vw,20px) 0;font-size:clamp(0.85rem,2vw,0.95rem);"></p>
 
   <div class="card">
     <h2>Daily Entry</h2>
@@ -37,19 +36,43 @@
         Stress (1–5)
         <input type="number" id="stress" min="1" max="5" placeholder="1–5" required>
       </label>
-
-      <label>
-        Symptom
-        <select id="symptom">
-          <option value="none">None</option>
-          <option value="fatigue">Fatigue</option>
-          <option value="headache">Headache</option>
-          <option value="fever">Fever</option>
-        </select>
-      </label>
     </div>
 
+    <label style="display:block;margin-top:15px;">
+      Symptoms (select all that apply)
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:clamp(8px,1.5vw,12px);margin-top:clamp(8px,1.5vw,10px);">
+        <label style="display:flex;align-items:center;gap:clamp(6px,1vw,8px);margin:0;font-size:clamp(0.8rem,1.5vw,0.9rem);">
+          <input type="checkbox" id="symptom_fatigue" value="fatigue" style="min-width:18px;min-height:18px;cursor:pointer;"> Fatigue
+        </label>
+        <label style="display:flex;align-items:center;gap:clamp(6px,1vw,8px);margin:0;font-size:clamp(0.8rem,1.5vw,0.9rem);">
+          <input type="checkbox" id="symptom_headache" value="headache" style="min-width:18px;min-height:18px;cursor:pointer;"> Headache
+        </label>
+        <label style="display:flex;align-items:center;gap:clamp(6px,1vw,8px);margin:0;font-size:clamp(0.8rem,1.5vw,0.9rem);">
+          <input type="checkbox" id="symptom_fever" value="fever" style="min-width:18px;min-height:18px;cursor:pointer;"> Fever
+        </label>
+        <label style="display:flex;align-items:center;gap:clamp(6px,1vw,8px);margin:0;font-size:clamp(0.8rem,1.5vw,0.9rem);">
+          <input type="checkbox" id="symptom_cough" value="cough" style="min-width:18px;min-height:18px;cursor:pointer;"> Cough
+        </label>
+        <label style="display:flex;align-items:center;gap:clamp(6px,1vw,8px);margin:0;font-size:clamp(0.8rem,1.5vw,0.9rem);">
+          <input type="checkbox" id="symptom_throat" value="sore_throat" style="min-width:18px;min-height:18px;cursor:pointer;"> Sore Throat
+        </label>
+        <label style="display:flex;align-items:center;gap:clamp(6px,1vw,8px);margin:0;font-size:clamp(0.8rem,1.5vw,0.9rem);">
+          <input type="checkbox" id="symptom_aches" value="body_aches" style="min-width:18px;min-height:18px;cursor:pointer;"> Body Aches
+        </label>
+        <label style="display:flex;align-items:center;gap:clamp(6px,1vw,8px);margin:0;font-size:clamp(0.8rem,1.5vw,0.9rem);">
+          <input type="checkbox" id="symptom_dizziness" value="dizziness" style="min-width:18px;min-height:18px;cursor:pointer;"> Dizziness
+        </label>
+        <label style="display:flex;align-items:center;gap:clamp(6px,1vw,8px);margin:0;font-size:clamp(0.8rem,1.5vw,0.9rem);">
+          <input type="checkbox" id="symptom_nausea" value="nausea" style="min-width:18px;min-height:18px;cursor:pointer;"> Nausea
+        </label>
+        <label style="display:flex;align-items:center;gap:clamp(6px,1vw,8px);margin:0;font-size:clamp(0.8rem,1.5vw,0.9rem);">
+          <input type="checkbox" id="symptom_chills" value="chills" style="min-width:18px;min-height:18px;cursor:pointer;"> Chills
+        </label>
+      </div>
+    </label>
+
     <button id="saveBtn">Save Entry</button>
+  </div>
   </div>
 
   <div class="card status">
