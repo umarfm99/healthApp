@@ -1,6 +1,6 @@
-# Health Insight Tracker — Netlify + Neon (Postgres) Integration
+# Health Insight Tracker — Netlify + Render (Postgres) Integration
 
-This project is a static front-end with Netlify Functions to persist user entries to a Postgres database (Neon or any Postgres-compatible DB).
+This project is a static front-end with Netlify Functions to persist user entries to a Postgres database (Render or any Postgres-compatible DB).
 
 Setup
 
@@ -11,7 +11,7 @@ npm install
 ```
 
 - Set your database connection string in Netlify (or locally) as `DATABASE_URL`.
-  - Neon provides a connection string you can use.
+  - Render provides a free Postgres database. Create one at [render.com](https://render.com)
   - Example (Netlify UI): Site settings → Build & deploy → Environment → Add environment variable.
 
 - To run locally (recommended to install Netlify CLI):
